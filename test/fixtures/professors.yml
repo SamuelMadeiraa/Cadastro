@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nomecompleto: MyString
+  cpf: MyString
+  aniversario: 2024-03-26
+
+two:
+  nomecompleto: MyString
+  cpf: MyString
+  aniversario: 2024-03-26
