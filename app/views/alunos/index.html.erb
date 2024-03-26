@@ -1,0 +1,8 @@
+<h1>Lista de Alunos cadastrados</h1>
+<br>
+<ul>
+  <% @alunos.each do |aluno| %>
+    <li><%= link_to aluno.nome_completo, aluno %></li>
+  <% end %>
+</ul>
+<%= link_to 'Novo Aluno', new_aluno_path %>
