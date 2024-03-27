@@ -1,4 +1,19 @@
-<div>
-  <h1 class="font-bold text-4xl">Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
-</div>
+<h1>Cadastro</h1>
+
+<h1>Oque gostaria de Cadastrar</h1>
+<br>
+<ul>
+    <li><%= link_to 'Novo Aluno', new_aluno_path %> </li>
+    <li><%= link_to 'Nono Professor', new_professor_path %> </li>
+    <li><%= link_to 'Nova turma', new_turma_path	 %>
+    </li>
+</ul>
+<br>
+<h1>cadastrados</h1>
+
+<ul>
+    <li><%= link_to 'Alunos', alunos_path %> </li>
+    <li><%= link_to 'Professor', professors_path	 %> </li>
+    <li><%= link_to 'Turma', turmas_path		 %>
+    </li>
+</ul>
