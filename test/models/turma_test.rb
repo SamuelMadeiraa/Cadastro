@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ProfessoresControllerTest < ActionDispatch::IntegrationTest
+class TurmaTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

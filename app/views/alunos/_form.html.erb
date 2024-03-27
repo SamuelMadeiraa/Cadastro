@@ -1,33 +1,44 @@
+<div class="max-w-sm rounded overflow-hidden shadow-lg">
+<div class="px-6 py-4">
 <%= form_with(model: @aluno, local: true) do |form| %>
-    <% if @aluno.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@aluno.errors.count, "error") %> prohibited this aluno from being saved:</h2>
-  
-        <ul>
-          <% @aluno.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  
-    <div class="field">
-      <%= form.label :nome_completo %>
-      <%= form.text_field :nome_completo %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :cpf %>
-      <%= form.text_field :cpf %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :data_nascimento %>
-      <%= form.date_field :data_nascimento %>
-    </div>
-  
-    <div class="actions">
-      <%= form.submit %>
+  <% if @aluno.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aluno.errors.count, "error") %> prohibited this professor from being saved:</h2>
+
+      <ul>
+        <% @aluno.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
+
+  <div class="field">
+    <%= form.label :nome_completo %>
+    <%= form.text_field :nome_completo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cpf %>
+    <%= form.text_field :cpf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_nascimento %>
+    <%= form.date_field :data_nascimento %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Criar aluno  ' %>
+  </div>
+
+
+
   
+  </div>
+  <div class="px-6 pt-4 pb-2">
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+  </div>
+  <% end %>

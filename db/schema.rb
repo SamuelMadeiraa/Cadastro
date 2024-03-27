@@ -10,19 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_26_181155) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_27_174948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "alunos", force: :cascade do |t|
-    t.string "nome_completo"
-    t.string "cpf"
-    t.date "data_nascimento"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "professores", force: :cascade do |t|
     t.string "nome_completo"
     t.string "cpf"
     t.date "data_nascimento"
@@ -38,4 +30,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_26_181155) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "turmas", force: :cascade do |t|
+    t.string "codigo_turma"
+    t.bigint "aluno_id", null: false
+    t.bigint "professor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aluno_id"], name: "index_turmas_on_aluno_id"
+    t.index ["professor_id"], name: "index_turmas_on_professor_id"
+  end
+
+  add_foreign_key "turmas", "alunos"
+  add_foreign_key "turmas", "professors"
 end
