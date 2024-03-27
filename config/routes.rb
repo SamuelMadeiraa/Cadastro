@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
   resources :alunos
-# config/routes.rb
 resources :professors
+resources :turmas
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
