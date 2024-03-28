@@ -2,8 +2,8 @@ class CreateTurmas < ActiveRecord::Migration[7.1]
   def change
     create_table :turmas do |t|
       t.string :codigo_turma
-      t.references :aluno, null: false, foreign_key: true
-      t.references :professor, null: false, foreign_key: true
+      t.integer :aluno_id
+      t.integer :professor_id
 
       t.timestamps
     end

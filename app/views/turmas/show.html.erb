@@ -1,9 +1,15 @@
-<!-- app/views/professors/show.html.erb -->
 <p>
-  <strong>Codigo da turma</strong>
+  <strong>Código:</strong>
   <%= @turma.codigo_turma %>
 </p>
+<p>
+  <strong>Aluno ID:</strong>
+  <%= @turma.aluno_id %>
+</p>
+<p>
+  <strong>Professor ID:</strong>
+  <%= @turma.professor_id %>
+</p>
 
-
-<%= link_to 'Edit', edit_turma_path(@turma) %> |
-<%= link_to 'Back', turma_path %>
+<%= link_to 'Editar', edit_turma_path(@turma) %> |
+<%= link_to 'Voltar', inicio_path	 %>

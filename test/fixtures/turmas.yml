@@ -2,10 +2,10 @@
 
 one:
   codigo_turma: MyString
-  aluno: one
-  professor: one
+  aluno_id: 1
+  professor_id: 1
 
 two:
   codigo_turma: MyString
-  aluno: two
-  professor: two
+  aluno_id: 1
+  professor_id: 1

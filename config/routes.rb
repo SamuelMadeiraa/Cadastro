@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get '/inicio', to: 'home#index'
   resources :alunos
-resources :professors
-resources :turmas
+  resources :professors
+  resources :turmas
 
 
 
