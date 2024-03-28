@@ -1,40 +1,41 @@
 <div class="max-w-sm rounded overflow-hidden shadow-lg">
-<div class="px-6 py-4">
-<%= form_with(model: @aluno, local: true) do |form| %>
-  <% if @aluno.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@aluno.errors.count, "error") %> prohibited this professor from being saved:</h2>
+  <div class="px-6 py-4">
+    <%= form_with(model: @aluno, local: true) do |form| %>
+      <% if @aluno.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@aluno.errors.count, "error") %> prohibited this professor from being saved:</h2>
 
-      <ul>
-        <% @aluno.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% @aluno.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= form.label :nome_completo %>
-    <%= form.text_field :nome_completo %>
+      <div class="field">
+        <%= form.label :nome_completo %>
+        <%= form.text_field :nome_completo %>
+      </div>
+
+      <div class="field">
+        <%= form.label :cpf %>
+        <%= form.text_field :cpf %>
+      </div>
+
+      <div class="field">
+        <%= form.label :data_nascimento %>
+        <%= form.date_field :data_nascimento %>
+      </div>
+
+      <div class="mb-4">
+        <%= form.label :Turma %>
+        <%= form.collection_select :turma_id, Turma.all, :id, :codigo_turma, { prompt: "Selecione a Turma" } %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit 'Criar aluno' %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
-  </div>
-
-  <div class="field">
-    <%= form.label :data_nascimento %>
-    <%= form.date_field :data_nascimento %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Criar aluno  ' %>
-  </div>
-
-
-
-  
-  </div>
- 
-  <% end %>
+</div>

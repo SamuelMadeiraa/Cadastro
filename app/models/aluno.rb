@@ -1,4 +1,4 @@
 class Aluno < ApplicationRecord
-    has_many :turmas
+    belongs_to :turmas
 
 end

@@ -1,6 +1,8 @@
 <h1><strong>Nome: </strong><%= @aluno.nome_completo %></h1>
 <p><strong>CPF:</strong> <%= @aluno.cpf %></p>
 <p><strong>Data de Nascimento:</strong> <%= @aluno.data_nascimento %></p>
+
+
 <%= link_to 'Editar', edit_aluno_path(@aluno) %> |
 <%= link_to 'Apagar', aluno_path(@aluno), method: :delete, data: { confirm: 'Tem certeza?' } %> |
 <%= link_to 'Voltar', inicio_path	 %>
