@@ -1,11 +1,49 @@
-<h1>Turmas</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+  .titulo-alunos {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
 
-<table>
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .botao-aluno{
+    margin-top:10px;
+  }
+</style>
+</head>
+
+<body>
+  <h1 class="titulo-alunos"><strong>Lista de Turmas cadastrados</strong></h1>
+  <table>
   <thead>
     <tr>
-      <th>Código</th>
-      <th>Aluno ID</th>
-      <th>Professor ID</th>
+      <th>Turmas</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,15 +51,14 @@
     <% @turmas.each do |turma| %>
       <tr>
         <td><%= turma.codigo_turma %></td>
-        <td><%= turma.aluno_id %></td>
-        <td><%= turma.professor_id %></td>
-        <td><%= link_to 'Detalhes', turma %></td>
-        <td><%= link_to 'Editar', edit_turma_path(turma) %></td>
-        <td><%= link_to 'Apagar', turma, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Nova Turma', new_turma_path %> <%= link_to 'Voltar', turmas_path %>
-
+<button class="botao-aluno">
+  <%= link_to 'Nova Turma', new_turma_path %> <%= link_to 'Voltar', turmas_path %>
+</button>
+</body>
+</html>
