@@ -1,0 +1,7 @@
+<div class="aluno-info">
+    <h1><strong>Disciplina:</strong> <%= @disciplina.materia %></h1>
+ <div class="botoes">
+    <%= link_to 'Editar', edit_disciplina_path (disciplina) %> |
+    <%= link_to 'Apagar', disciplinas_path(@disciplina), method: :delete, data: { confirm: 'Tem certeza?' } %> |
+    <%= link_to 'Voltar', inicio_path %>
+</div>

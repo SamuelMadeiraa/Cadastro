@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :alunos
   resources :professors
   resources :turmas
-  get 'alunos/busca', to: 'alunos#buscar', as: 'buscar_alunos'
+  resources :disciplina, path: 'disciplinas-cadastradas'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
