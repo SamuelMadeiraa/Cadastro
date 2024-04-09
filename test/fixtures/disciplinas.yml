@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  materia: MyString
+  enabled: false
+  aluno: one
+  professor: one
+  turma: one
+
+two:
+  materia: MyString
+  enabled: false
+  aluno: two
+  professor: two
+  turma: two
