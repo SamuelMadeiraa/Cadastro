@@ -26,10 +26,15 @@
           <%= form.label :nome_completo %>
           <%= form.text_field :nome_completo, class: "input" %>
         </div>
+
+        <div class="field">
+          <%= form.label :Email %>
+          <%= form.email_field :email, class: "input" %>
+        </div>
      
         <div class="field">
           <%= form.label :CPF %>
-          <%= form.text_field :format_cpf,  class: "input"%>
+          <%= form.text_field :cpf,  class: "input"%>
       </div>
   
         <div class="field">

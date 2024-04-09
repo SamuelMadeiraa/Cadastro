@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_09_173458) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_09_190244) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,32 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_09_173458) do
     t.string "email"
     t.string "format_cpf"
     t.index ["turma_id"], name: "index_alunos_on_turma_id"
+  end
+
+  create_table "disciplinas", force: :cascade do |t|
+    t.string "materia"
+    t.boolean "enabled"
+    t.bigint "aluno_id", null: false
+    t.bigint "professor_id", null: false
+    t.bigint "turma_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aluno_id"], name: "index_disciplinas_on_aluno_id"
+    t.index ["professor_id"], name: "index_disciplinas_on_professor_id"
+    t.index ["turma_id"], name: "index_disciplinas_on_turma_id"
+  end
+
+  create_table "materia", force: :cascade do |t|
+    t.string "materia"
+    t.boolean "enabled"
+    t.bigint "aluno_id", null: false
+    t.bigint "professor_id", null: false
+    t.bigint "turma_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aluno_id"], name: "index_materia_on_aluno_id"
+    t.index ["professor_id"], name: "index_materia_on_professor_id"
+    t.index ["turma_id"], name: "index_materia_on_turma_id"
   end
 
   create_table "professors", force: :cascade do |t|
@@ -44,5 +70,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_09_173458) do
   end
 
   add_foreign_key "alunos", "turmas"
+  add_foreign_key "disciplinas", "alunos"
+  add_foreign_key "disciplinas", "professors"
+  add_foreign_key "disciplinas", "turmas"
+  add_foreign_key "materia", "alunos"
+  add_foreign_key "materia", "professors"
+  add_foreign_key "materia", "turmas"
   add_foreign_key "professors", "turmas"
 end

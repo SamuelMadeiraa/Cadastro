@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MateriasControllerTest < ActionDispatch::IntegrationTest
+class MateriaControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
