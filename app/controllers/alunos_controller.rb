@@ -21,12 +21,11 @@ class AlunosController < ApplicationController
         render :new
       end
     end
-  
+
     def edit
     end
   
     def update
-      byebug
       if @aluno.update(aluno_params)
         redirect_to @aluno, notice: 'Aluno atualizado com sucesso.'
       else

@@ -26,22 +26,23 @@
           <%= form.label :nome_completo %>
           <%= form.text_field :nome_completo, class: "input" %>
         </div>
-  
+     
         <div class="field">
-          <%= form.label :cpf %>
-          <%= form.text_field :cpf,  class: "input"%>
+          <%= form.label :CPF %>
+          <%= form.text_field :format_cpf,  class: "input"%>
       </div>
   
         <div class="field">
-          <%= form.label :data_nascimento %>
+          <%= form.label :data_Nascimento %>
           <%= form.date_field :data_nascimento, class: "input" %>
         </div>
   
         <div class="mb-4">
         <%= form.label :turma_id %>
         <%= form.select :turma_id, options_for_select(Turma.all.map { |t| [t.turma, t.id] }) %>
+       </div>
+
       
-        </div>
   
         <div class="actions">
           <%= form.submit 'Criar aluno'%>
