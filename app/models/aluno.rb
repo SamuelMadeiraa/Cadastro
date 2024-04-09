@@ -1,4 +1,6 @@
 class Aluno < ApplicationRecord
-    belongs_to :turmas
+  belongs_to :turma, optional: true
+   
 
-end
+  end
+

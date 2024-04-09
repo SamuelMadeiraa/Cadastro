@@ -14,7 +14,7 @@ class AlunosController < ApplicationController
   
     def create
       @aluno = Aluno.new(aluno_params)
-  
+      
       if @aluno.save
         redirect_to @aluno, notice: 'Aluno criado com sucesso.'
       else
@@ -26,6 +26,7 @@ class AlunosController < ApplicationController
     end
   
     def update
+      byebug
       if @aluno.update(aluno_params)
         redirect_to @aluno, notice: 'Aluno atualizado com sucesso.'
       else

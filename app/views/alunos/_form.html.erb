@@ -4,61 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-    /* Estilos para o formulário */
-    .form {
-      font-family: Arial, sans-serif;
-    }
-
-    /* Estilos para os campos de entrada de texto */
-    .input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 6px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    /* Estilos para o botão de envio */
-    .btn {
-      background-color: #333;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    /* Estilos para a caixa de seleção */
-    .select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 6px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    /* Estilos para centralizar o conteúdo */
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    /* Estilos para o container do formulário */
-    .form-container {
-      max-width: 400px;
-      width: 100%;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-  </style>
+  
 </head>
 <body>
   <div class="container">
@@ -83,8 +29,8 @@
   
         <div class="field">
           <%= form.label :cpf %>
-          <%= form.text_field :cpf, class: "input" %>
-        </div>
+          <%= form.text_field :cpf,  class: "input"%>
+      </div>
   
         <div class="field">
           <%= form.label :data_nascimento %>
@@ -92,8 +38,9 @@
         </div>
   
         <div class="mb-4">
-          <%= form.label :Turma %>
-          <%= form.collection_select :turma_id, Turma.all, :id, :codigo_turma, { prompt: "Selecione a Turma" }, class: "select" %>
+        <%= form.label :turma_id %>
+        <%= form.select :turma_id, options_for_select(Turma.all.map { |t| [t.turma, t.id] }) %>
+      
         </div>
   
         <div class="actions">

@@ -1,4 +1,8 @@
 class Professor < ApplicationRecord
-    has_and_belongs_to_many :turmas
+  belongs_to :turma
+  validates :cpf, presence: true 
+  
+  validates :cpf, presence: true, cpf: true
 
 end
+

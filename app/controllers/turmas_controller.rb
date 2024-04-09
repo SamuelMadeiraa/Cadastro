@@ -45,6 +45,7 @@ class TurmasController < ApplicationController
   private
 
   def turma_params
-    params.require(:turma).permit(:codigo_turma, :aluno_id, :professor_id)
+    params.require(:turma).permit(:turma, :aluno_id, :professor_id)
   end
 end
+  

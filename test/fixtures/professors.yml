@@ -2,10 +2,12 @@
 
 one:
   nome_completo: MyString
+  aniversario: MyString
   cpf: MyString
-  data_nascimento: 2024-03-27
+  turma: one
 
 two:
   nome_completo: MyString
+  aniversario: MyString
   cpf: MyString
-  data_nascimento: 2024-03-27
+  turma: two

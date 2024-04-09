@@ -1,46 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-       .aluno-info {
-        background-color: #f9f9f9;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 20px;
-        margin: 20px auto;
-        max-width: 600px;
-        }
-
-        .aluno-info h1 {
-        font-size: 24px;
-        }
-
-        .aluno-info p {
-        font-size: 16px;
-        margin-bottom: 10px;
-        }
-
-        .botoes {
-        margin-top: 20px;
-         }
- 
-    </style>
-</head>
-<body>
-    <div class="aluno-info">
-        <h1><strong>Nome:</strong> <%= @aluno.nome_completo %></h1>
-        <p><strong>CPF:</strong> <%= @aluno.cpf %></p>
-        <p><strong>Data de Nascimento:</strong> <%= @aluno.data_nascimento %></p>
-      
-        <div class="botoes">
-          <%= link_to 'Editar', edit_aluno_path(@aluno) %> |
-          <%= link_to 'Apagar', aluno_path(@aluno), method: :delete, data: { confirm: 'Tem certeza?' } %> |
-          <%= link_to 'Voltar', inicio_path %>
-        </div>
-      </div>
-      
-</body>
-</html>
+<div class="aluno-info">
+    <h1><strong>Nome:</strong> <%= @aluno.nome_completo %></h1>
+    <p><strong>CPF:</strong> <%= @aluno.cpf %></p>
+    <p><strong>Data de Nascimento:</strong> <%= @aluno.data_nascimento %></p>
+    <p><strong>Turma:</strong> <%= @aluno.turma.turma %></p>
+ <div class="botoes">
+    <%= link_to 'Editar', edit_aluno_path(@aluno) %> |
+    <%= link_to 'Apagar', aluno_path(@aluno), method: :delete, data: { confirm: 'Tem certeza?' } %> |
+    <%= link_to 'Voltar', inicio_path %>
+</div>
