@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :alunos
   resources :professors
   resources :turmas
-  resources :disciplina, path: 'disciplinas-cadastradas'
+  resources :disciplinas
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

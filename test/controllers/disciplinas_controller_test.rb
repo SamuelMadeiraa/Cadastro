@@ -1,6 +1,6 @@
 require "test_helper"
 
-class DisciplinaControllerTest < ActionDispatch::IntegrationTest
+class DisciplinasControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

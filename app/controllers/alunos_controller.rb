@@ -45,7 +45,7 @@ class AlunosController < ApplicationController
     end
   
     def aluno_params
-      params.require(:aluno).permit(:nome_completo, :cpf, :data_nascimento, :codigo_turma, :turma_id, :email)
+      params.require(:aluno).permit(:nome_completo, :cpf, :data_nascimento, :codigo_turma, :turma_id, :email, :disciplina, :nome)
     end
   end
   

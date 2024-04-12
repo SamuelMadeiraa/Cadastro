@@ -1,5 +1,6 @@
 class Turma < ApplicationRecord
-    has_and_belongs_to_many :professores
-  end
-
-  
+  has_many :matriculas
+  has_many :alunos, through: :matriculas
+  has_many :professores
+  belongs_to :disciplina
+end
