@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   root 'home#index'
   get '/inicio', to: 'home#index'
-  resources :alunos
+  
+    
   resources :professors
   resources :turmas
   resources :disciplinas
+  resources :alunos do
+    collection do
+      get 'alunos/buscar_por_disciplina_e_turma', to: 'alunos#buscar_por_disciplina_e_turma'
+    end
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

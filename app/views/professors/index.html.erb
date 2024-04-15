@@ -4,6 +4,7 @@
     <thead>
       <tr>
         <th>Nome Completo</th>
+        <th>Email</th>
         <th>CPF</th>
         <th>Data de nascimento</th>
         <th>Turma</th>
@@ -14,7 +15,8 @@
     <% @professors.each do |professor| %>
       <tr>
         <td><%= link_to professor.nome_completo, professor %></td>
-        <td><%= professor.cpf %></td>
+        <td><%= professor.email %></td>
+        <td><%= professor.cpf.gsub(/(\d{3})(\d{3})(\d{3})(\d{2})/, '\1.\2.\3-\4') %></td>
         <td><%= professor.aniversario %></td>
         <td><%= professor.turma.turma %></td>
        

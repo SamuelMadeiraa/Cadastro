@@ -62,13 +62,7 @@
           <td><%= aluno.cpf.gsub(/(\d{3})(\d{3})(\d{3})(\d{2})/, '\1.\2.\3-\4') %></td>
           <td><%= aluno.data_nascimento %></td>
           <td><%= aluno.turma.turma %></td>
-          <td>
-          <% if aluno.disciplina %>
-            <%= aluno.disciplina.nome %>
-          <% else %>
-            Sem disciplina
-          <% end %>
-        </td>
+     
 
         </tr>
       <% end %>
@@ -78,5 +72,7 @@
   <button class="botao-aluno">
     <%= link_to "Novo aluno", new_aluno_path	%> 
   </button>
+
+  
 </body>
 </html>

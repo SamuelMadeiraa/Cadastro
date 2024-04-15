@@ -37,6 +37,29 @@ class AlunosController < ApplicationController
       @aluno.destroy
       redirect_to alunos_url, notice: 'Aluno apagado com sucesso.'
     end
+ 
+    def buscar_por_disciplina_e_turma
+      disciplina_id = params[:disciplina_id]
+      turma_id = params[:turma_id]
+      
+      if disciplina_id && turma_id
+        disciplina = Disciplina.find_by(id: disciplina_id)
+        turma = Turma.find_by(id: turma_id)
+    
+        if disciplina && turma
+          alunos = disciplina.alunos.where(turma_id: turma_id)
+          render json: alunos, status: :ok
+        else
+          render json: { error: 'Disciplina ou turma não encontrada' }, status: :not_found
+        end
+      else
+        render json: { error: 'Parâmetros inválidos' }, status: :unprocessable_entity
+      end
+    end
+    
+    
+    
+
   
     private
   
@@ -45,7 +68,7 @@ class AlunosController < ApplicationController
     end
   
     def aluno_params
-      params.require(:aluno).permit(:nome_completo, :cpf, :data_nascimento, :codigo_turma, :turma_id, :email, :disciplina, :nome)
+      params.require(:aluno).permit(:nome_completo, :cpf, :data_nascimento, :codigo_turma, :turma_id, :email, :disciplina_id)
     end
   end
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_12_170306) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_12_183031) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_12_170306) do
     t.bigint "turma_id", null: false
     t.string "email"
     t.string "format_cpf"
+    t.string "disciplina_id"
     t.index ["turma_id"], name: "index_alunos_on_turma_id"
   end
 
@@ -39,6 +40,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_12_170306) do
     t.bigint "turma_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "disciplina_id"
     t.index ["aluno_id"], name: "index_matriculas_on_aluno_id"
     t.index ["professor_id"], name: "index_matriculas_on_professor_id"
     t.index ["turma_id"], name: "index_matriculas_on_turma_id"

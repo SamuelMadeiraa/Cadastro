@@ -12,7 +12,8 @@ class DisciplinasController < ApplicationController
       if @disciplina.save
         redirect_to disciplinas_path
       else
-        render 'new'
+        flash.now[:alert] = 'Não foi possível criar a disciplina, pois já existe uma disciplina com esse nome.'
+        render :new
       end
     end
   
