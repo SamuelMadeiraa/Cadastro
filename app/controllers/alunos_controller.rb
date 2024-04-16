@@ -3,11 +3,11 @@ class AlunosController < ApplicationController
 
   def index
     @alunos = Aluno.all
-    def filtrar
-      @alunos = Aluno.where("nome_completo LIKE ?", "%#{params[:query]}%")
-      render 'filtrar'
-    end
-  
+  end
+
+  def filtrar
+    @alunos = Aluno.filter_by_name(params[:query])
+    render 'filtrar'
   end
 
   def show
@@ -44,17 +44,6 @@ class AlunosController < ApplicationController
     redirect_to alunos_url, notice: 'Aluno apagado com sucesso.'
   end
 
-  def filtrar
-    disciplina_id = params[:disciplina_id]
-    turma_id = params[:turma_id]
-  
-    @alunos = Aluno.joins(:matriculas).where(matriculas: { disciplina_id: disciplina_id, turma_id: turma_id }).distinct
-  
-    respond_to do |format|
-      format.html { render :filtrar }
-      format.json { render json: @alunos }
-    end
-  end
 
  
   private
@@ -62,6 +51,8 @@ class AlunosController < ApplicationController
   def set_aluno
     @aluno = Aluno.find(params[:id])
   end
+
+ 
 
   def aluno_params
     params.require(:aluno).permit(:nome_completo, :cpf, :data_nascimento, :codigo_turma, :turma_id, :email, :disciplina_id)

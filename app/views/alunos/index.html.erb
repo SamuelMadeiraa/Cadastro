@@ -41,11 +41,12 @@
 <body>
   <h1 class="titulo-alunos"><strong>Lista de Alunos cadastrados</strong></h1>
 
-  <%= form_with url: "/alunos/filtrar", method: :get do |form| %>
+  <%= form_with url: filtrar_alunos_path, method: :get do |form| %>
     <%= form.label :query, "Search for:" %>
     <%= form.text_field :query %>
     <%= form.submit "Search" %>
   <% end %>
+  
 
   <table>
     <thead>
