@@ -1,8 +1,9 @@
 # models/aluno.rb
 class Aluno < ApplicationRecord
-  belongs_to :turma
-  has_many :Disciplinas
   has_many :matriculas
+  has_many :disciplinas, through: :matriculas
+  belongs_to :turma
+
 
   validates :nome_completo, uniqueness: { case_sensitive: false, message: "já existe um aluno(a) nome com esse nome" }
   validates :cpf, uniqueness: { case_sensitive: false, message: "já existe um aluno(a) com esse CPF" }

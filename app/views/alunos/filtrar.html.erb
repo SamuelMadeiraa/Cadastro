@@ -12,8 +12,11 @@
     <% @alunos.each do |aluno| %>
       <tr>
         <td><%= aluno.nome_completo%></td>
-        <td><%= aluno.disciplina_id%></td>
-        <td><%= aluno.turma.turma%></td>
+        <td>
+        <% disciplina = Disciplina.find_by(id: aluno.disciplina_id) %>
+        <%= disciplina ? disciplina.nome : 'Nenhuma disciplina' %>
+      </td>        
+      <td><%= aluno.turma.turma%></td>
 
         
       </tr>

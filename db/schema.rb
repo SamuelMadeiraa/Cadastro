@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_12_183031) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_18_133523) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_12_183031) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
+    t.bigint "disciplina_id"
+    t.index ["disciplina_id"], name: "index_professors_on_disciplina_id"
     t.index ["turma_id"], name: "index_professors_on_turma_id"
   end
 
@@ -67,5 +69,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_12_183031) do
   add_foreign_key "matriculas", "alunos"
   add_foreign_key "matriculas", "professors"
   add_foreign_key "matriculas", "turmas"
+  add_foreign_key "professors", "disciplinas"
   add_foreign_key "professors", "turmas"
 end
