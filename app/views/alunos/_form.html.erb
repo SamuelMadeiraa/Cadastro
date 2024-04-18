@@ -49,10 +49,12 @@
        </div>
 
        <div class="mb-4">
-       <%= form.label :turma_id %>
-       <%= form.select :disciplina_id, options_for_select(Disciplina.all.map { |d| [d.nome, d.id] }) %>
+        <%= form.label :disciplinas %>
+        <%= form.select :disciplina_ids, options_for_select(Disciplina.all.map { |d| [d.nome, d.id] }), {}, { multiple: true } %>
        </div>
-
+     
+      
+    
      
 
       

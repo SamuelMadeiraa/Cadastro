@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_18_133523) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_18_161600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_133523) do
     t.string "format_cpf"
     t.string "disciplina_id"
     t.index ["turma_id"], name: "index_alunos_on_turma_id"
+  end
+
+  create_table "alunos_disciplinas", force: :cascade do |t|
+    t.bigint "aluno_id", null: false
+    t.bigint "disciplina_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aluno_id"], name: "index_alunos_disciplinas_on_aluno_id"
+    t.index ["disciplina_id"], name: "index_alunos_disciplinas_on_disciplina_id"
   end
 
   create_table "disciplinas", force: :cascade do |t|
@@ -66,6 +75,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_133523) do
   end
 
   add_foreign_key "alunos", "turmas"
+  add_foreign_key "alunos_disciplinas", "alunos"
+  add_foreign_key "alunos_disciplinas", "disciplinas"
   add_foreign_key "matriculas", "alunos"
   add_foreign_key "matriculas", "professors"
   add_foreign_key "matriculas", "turmas"
