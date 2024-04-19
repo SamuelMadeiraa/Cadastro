@@ -1,7 +1,8 @@
 class Turma < ApplicationRecord
- has_many :aluno
  has_many :professors
+ has_many :matriculas
+has_many :alunos, through: :matriculas
 
-      validates :nome, uniqueness: { case_sensitive: false, on: :create, message: "já existe uma aluno com esse nome" }
+      validates :turma, uniqueness: { case_sensitive: false, on: :create, message: "já existe uma aluno com esse nome" }
 
 end

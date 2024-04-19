@@ -28,17 +28,23 @@ class AlunosController < ApplicationController
     end
   end
 
+  # GET /alunos/1/edit
   def edit
   end
 
+  # PATCH/PUT /alunos/1
   def update
-    if @aluno.update(aluno_params)
-      redirect_to @aluno, notice: 'Aluno atualizado com sucesso.'
-    else
-      render :edit
+    respond_to do |format|
+      if @aluno.update(aluno_params)
+        format.html { redirect_to @aluno, notice: 'Aluno was successfully updated.' }
+        format.json { render :show, status: :ok, location: @aluno }
+      else
+        format.html { render :edit }
+        format.json { render json: @aluno.errors, status: :unprocessable_entity }
+      end
     end
   end
-
+  
   def destroy
     @aluno.destroy
     redirect_to alunos_url, notice: 'Aluno apagado com sucesso.'
@@ -47,14 +53,13 @@ class AlunosController < ApplicationController
 
  
   private
-
+  # Use callbacks to share common setup or constraints between actions.
   def set_aluno
     @aluno = Aluno.find(params[:id])
   end
 
- 
-
+  # Only allow a list of trusted parameters through.
   def aluno_params
-    params.require(:aluno).permit(:nome_completo, :cpf, :data_nascimento, :codigo_turma, :turma_id, :email, :disciplina_id)
+    params.require(:aluno).permit(:nome_completo, :cpf, :data_nascimento, :turma_id, :email, :disciplina_ids => [])
   end
 end

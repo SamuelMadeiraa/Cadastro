@@ -1,70 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  
-</head>
-<body>
-  <div class="container">
-    <div class="form-container">
-      <%= form_with(model: @aluno, local: true, class: "form") do |form| %>
-        <% if @aluno.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@aluno.errors.count, "error") %> prohibited this professor from being saved:</h2>
-  
-            <ul>
-              <% @aluno.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-  
-        <div class="field">
-          <%= form.label :nome_completo %>
-          <%= form.text_field :nome_completo, class: "input" %>
-        </div>
+<div class="container">
+  <div class="form-container">
+    <%= form_with(model: @aluno, local: true, class: "form") do |form| %>
+      <% if @aluno.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@aluno.errors.count, "error") %> prohibited this professor from being saved:</h2>
 
-        <div class="field">
-          <%= form.label :Email %>
-          <%= form.email_field :email, class: "input" %>
-        </div>
-     
-        <div class="field">
-          <%= form.label :CPF %>
-          <%= form.text_field :cpf,  class: "input"%>
-      </div>
-  
-        <div class="field">
-          <%= form.label :data_Nascimento %>
-          <%= form.date_field :data_nascimento, class: "input" %>
-
-        </div>
-  
-        <div class="mb-4">
-        <%= form.label :turma_id %>
-        <%= form.select :turma_id, options_for_select(Turma.all.map { |t| [t.turma, t.id] }) %>
-       </div>
-
-       <div class="mb-4">
-        <%= form.label :disciplinas %>
-        <%= form.select :disciplina_ids, options_for_select(Disciplina.all.map { |d| [d.nome, d.id] }), {}, { multiple: true } %>
-       </div>
-     
-      
-    
-     
-
-      
-  
-        <div class="actions">
-          <%= form.submit 'Criar aluno'%>
+          <ul>
+            <% @aluno.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         </div>
       <% end %>
+
+      <div class="field">
+        <%= form.label :nome_completo %>
+        <%= form.text_field :nome_completo, class: "input" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :Email %>
+        <%= form.email_field :email, class: "input" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :cpf %>
+        <%= form.text_field :cpf, class: "input" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :aniversario %>
+        <%= form.date_field :aniversario, class: "input" %>
+      </div>
+
+      <div class="mb-4">
+        <%= form.label :turma_id %>
+        <%= form.select :turma_id, options_for_select(Turma.all.map { |t| [t.turma, t.id] }), class: "input" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :disciplina_ids, 'Disciplinas' %><br>
+        <%= form.collection_check_boxes :disciplina_ids, Disciplina.all, :id, :nome, class: "input" do |b| %>
+      <div class="collection-check-box">
+        <%= b.check_box + b.label %>
     </div>
+      <% end %>
+</div>
+
+
+      <div class="actions">
+        <%= form.submit 'Criar Aluno', class: "input" %>
+      </div>
+    <% end %>
   </div>
-  
-</body>
-</html>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_18_161600) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_19_154543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,16 +22,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_161600) do
     t.datetime "updated_at", null: false
     t.bigint "turma_id", null: false
     t.string "email"
-    t.string "format_cpf"
-    t.string "disciplina_id"
+    t.bigint "disciplina_id"
+    t.index ["disciplina_id"], name: "index_alunos_on_disciplina_id"
     t.index ["turma_id"], name: "index_alunos_on_turma_id"
   end
 
-  create_table "alunos_disciplinas", force: :cascade do |t|
+  create_table "alunos_disciplinas", id: false, force: :cascade do |t|
     t.bigint "aluno_id", null: false
     t.bigint "disciplina_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["aluno_id", "disciplina_id"], name: "index_alunos_disciplinas_on_aluno_id_and_disciplina_id", unique: true
     t.index ["aluno_id"], name: "index_alunos_disciplinas_on_aluno_id"
     t.index ["disciplina_id"], name: "index_alunos_disciplinas_on_disciplina_id"
   end
@@ -49,8 +48,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_161600) do
     t.bigint "turma_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "disciplina_id"
+    t.bigint "disciplina_id", null: false
     t.index ["aluno_id"], name: "index_matriculas_on_aluno_id"
+    t.index ["disciplina_id"], name: "index_matriculas_on_disciplina_id"
     t.index ["professor_id"], name: "index_matriculas_on_professor_id"
     t.index ["turma_id"], name: "index_matriculas_on_turma_id"
   end
@@ -63,9 +63,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_161600) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
-    t.bigint "disciplina_id"
-    t.index ["disciplina_id"], name: "index_professors_on_disciplina_id"
     t.index ["turma_id"], name: "index_professors_on_turma_id"
+  end
+
+  create_table "professors_turmas", id: false, force: :cascade do |t|
+    t.bigint "professor_id", null: false
+    t.bigint "turma_id", null: false
   end
 
   create_table "turmas", force: :cascade do |t|
@@ -74,12 +77,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_18_161600) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "alunos", "disciplinas"
   add_foreign_key "alunos", "turmas"
   add_foreign_key "alunos_disciplinas", "alunos"
   add_foreign_key "alunos_disciplinas", "disciplinas"
+  add_foreign_key "alunos_disciplinas", "alunos"
+  add_foreign_key "alunos_disciplinas", "disciplinas"
   add_foreign_key "matriculas", "alunos"
+  add_foreign_key "matriculas", "disciplinas"
   add_foreign_key "matriculas", "professors"
   add_foreign_key "matriculas", "turmas"
-  add_foreign_key "professors", "disciplinas"
   add_foreign_key "professors", "turmas"
 end

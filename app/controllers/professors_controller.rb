@@ -45,7 +45,7 @@ class ProfessorsController < ApplicationController
       end
   
       def professor_params
-        params.require(:professor).permit(:nome_completo, :cpf, :data_nascimento, :codigo_turma, :turma_id, :email, :disciplina_id)
+        params.require(:professor).permit(:nome_completo, :cpf, :data_nascimento, :codigo_turma, :turma_id, :email)
       end
   end
   

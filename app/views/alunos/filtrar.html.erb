@@ -4,22 +4,21 @@
   <thead>
     <tr>
       <th>Nome</th>
-     <th>Disciplina</th>
       <th>Turma</th>
+      <th>Disciplinas</th>
     </tr>
   </thead>
   <tbody>
     <% @alunos.each do |aluno| %>
       <tr>
-        <td><%= aluno.nome_completo%></td>
-        <td>
-        <% disciplina = Disciplina.find_by(id: aluno.disciplina_id) %>
-        <%= disciplina ? disciplina.nome : 'Nenhuma disciplina' %>
-      </td>        
+      <td><%= aluno.nome_completo%></td>
       <td><%= aluno.turma.turma%></td>
-
-        
-      </tr>
+      <td>
+        <% aluno.disciplinas.each do |disciplina| %>
+          <li><%= disciplina.nome %></li>
+        <% end %>
+      </td>
+     </tr>
     <% end %>
   </tbody>
 </table>

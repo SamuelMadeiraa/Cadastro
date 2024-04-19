@@ -36,7 +36,6 @@
         <div class="mb-4">
         <%= form.label :turma_id %>
         <%= form.select :turma_id, options_for_select(Turma.all.map { |t| [t.turma, t.id] }), class: "input" %>
-      
         </div>
   
         <div class="actions">
