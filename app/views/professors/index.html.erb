@@ -16,9 +16,9 @@
       <tr>
         <td><%= link_to professor.nome_completo, professor %></td>
         <td><%= professor.email %></td>
-        <td><%= professor.cpf.gsub(/(\d{3})(\d{3})(\d{3})(\d{2})/, '\1.\2.\3-\4') %></td>
-        <td><%= professor.aniversario %></td>
-      </tr>
+        <td><%= formatar_cpf(professor.cpf) %></td>
+        <td><%= formatar_data_nascimento(professor.data_nascimento) %></td>
+        </tr>
       <% professor.turmas.each do |turma| %>
         <%= turma.turma %><br>
       <% end %>

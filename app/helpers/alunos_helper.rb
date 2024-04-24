@@ -1,10 +1,9 @@
 module AlunosHelper
-    def cpf_formatado(cpf)
-        # Verifica se o CPF está no formato correto
-        if cpf =~ /^\d{3}\.\d{3}\.\d{3}-\d{2}$/
-          return true
-        else
-          return false
-        end
-      end
+  def formatar_data_nascimento(data_nascimento)
+    data_nascimento.strftime("%d/%m/%Y")
+  end
+  def formatar_cpf(cpf)
+    cpf.gsub(/(\d{3})(\d{3})(\d{3})(\d{2})/, '\1.\2.\3-\4')
+  end
+  
 end
