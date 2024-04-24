@@ -3,17 +3,15 @@ Rails.application.routes.draw do
   get '/inicio', to: 'home#index'
 
 
-  resources :disciplinas
- 
+    
   resources :professors
-  resources :turmas do
-    get 'alunos_da_turma', on: :collection
-  
+  resources :disciplinas
   resources :alunos do
     collection do
       get 'filtrar', to: 'alunos#filtrar'
     end
   end
-end 
-
+  resources :turmas do
+    get 'filtroalunos', on: :member
+  end
 end

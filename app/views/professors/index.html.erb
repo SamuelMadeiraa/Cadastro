@@ -18,9 +18,11 @@
         <td><%= professor.email %></td>
         <td><%= professor.cpf.gsub(/(\d{3})(\d{3})(\d{3})(\d{2})/, '\1.\2.\3-\4') %></td>
         <td><%= professor.aniversario %></td>
-        <td><%= professor.turma.turma %></td>
-       
       </tr>
+      <% professor.turmas.each do |turma| %>
+        <%= turma.turma %><br>
+      <% end %>
+    </td>
     <% end %>
   </tbody>
   </table>

@@ -1,6 +1,7 @@
 class TurmasController < ApplicationController
   def index
     @turmas = Turma.all
+
   end
 
   def show
@@ -42,11 +43,9 @@ class TurmasController < ApplicationController
     redirect_to turmas_path, notice: 'Turma apagada com sucesso.'
   end
   
-  def alunos_da_turma
-    @turma = Turma.find_by(numero: '111')
-    @alunos = @turma.alunos
-    render 'filtroalunos'
-  end
+
+
+ 
   private
 
   def turma_params

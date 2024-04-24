@@ -3,6 +3,7 @@ class AlunosController < ApplicationController
 
   def index
     @alunos = Aluno.all
+    @disciplinas = Disciplina.all
   end
 
   def filtrar
@@ -15,51 +16,52 @@ class AlunosController < ApplicationController
 
   def new
     @aluno = Aluno.new
-    
   end
 
   def create
     @aluno = Aluno.new(aluno_params)
 
-    if @aluno.save
-      redirect_to @aluno, notice: 'Aluno criado com sucesso.'
-    else
-      render :new
-    end
-  end
-
-  # GET /alunos/1/edit
-  def edit
-  end
-
-  # PATCH/PUT /alunos/1
-  def update
     respond_to do |format|
-      if @aluno.update(aluno_params)
-        format.html { redirect_to @aluno, notice: 'Aluno was successfully updated.' }
-        format.json { render :show, status: :ok, location: @aluno }
+      if @aluno.save
+        format.html { redirect_to @aluno, notice: 'Aluno criado com sucesso.' }
+        format.json { render :show, status: :created, location: @aluno }
       else
-        format.html { render :edit }
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @aluno.errors, status: :unprocessable_entity }
       end
     end
   end
-  
-  def destroy
-    @aluno.destroy
-    redirect_to alunos_url, notice: 'Aluno apagado com sucesso.'
+
+  def edit
   end
 
+  def update
+    respond_to do |format|
+      if @aluno.update(aluno_params)
+        format.html { redirect_to @aluno, notice: 'Aluno atualizado com sucesso!' }
+        format.json { render :show, status: :ok, location: @aluno }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @aluno.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
- 
+  def destroy
+    @aluno.destroy
+    respond_to do |format|
+      format.html { redirect_to alunos_url, notice: 'Aluno apagado com sucesso.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_aluno
     @aluno = Aluno.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def aluno_params
-    params.require(:aluno).permit(:nome_completo, :cpf, :data_nascimento, :turma_id, :email, :disciplina_ids => [])
+    params.require(:aluno).permit(:nome_completo, :email, :cpf, :turma_id, :data_nascimento, disciplina_ids: [])
   end
 end

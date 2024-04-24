@@ -19,24 +19,32 @@ class ProfessorsController < ApplicationController
     def create
       @professor = Professor.new(professor_params)
   
-      if @professor.save
-        redirect_to @professor, notice: 'Professor was successfully created.'
-      else
-        render :new
+      respond_to do |format|
+        if @professor.save
+          format.html { redirect_to @professor, notice: 'Professor criado com sucesso.' }
+          format.json { render :show, status: :created, location: @professor }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @professor.errors, status: :unprocessable_entity }
+        end
       end
     end
   
     def update
-      if @professor.update(professor_params)
-        redirect_to @professor, notice: 'Professor was successfully updated.'
-      else
-        render :edit
+      respond_to do |format|
+        if @professor.update(professor_params)
+          format.html { redirect_to @professor, notice: 'professor atualizado com sucesso!' }
+          format.json { render :show, status: :ok, location: @professor }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @professor.errors, status: :unprocessable_entity }
+        end
       end
     end
   
     def destroy
       @professor.destroy
-      redirect_to professors_url, notice: 'Professor was successfully destroyed.'
+      redirect_to professors_url, notice: 
     end
   
     private
