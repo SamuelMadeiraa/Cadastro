@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_22_130737) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_25_172242) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_130737) do
     t.index ["aluno_id", "disciplina_id"], name: "index_alunos_disciplinas_on_aluno_id_and_disciplina_id", unique: true
     t.index ["aluno_id"], name: "index_alunos_disciplinas_on_aluno_id"
     t.index ["disciplina_id"], name: "index_alunos_disciplinas_on_disciplina_id"
+  end
+
+  create_table "blibliotecas", force: :cascade do |t|
+    t.string "cpf"
+    t.string "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "disciplinas", force: :cascade do |t|
@@ -68,10 +75,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_130737) do
     t.string "nome_completo"
     t.string "aniversario"
     t.string "cpf"
-    t.bigint "turma_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
+    t.date "data_nascimento"
+    t.bigint "turma_id"
     t.index ["turma_id"], name: "index_professors_on_turma_id"
   end
 
@@ -87,9 +95,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_130737) do
   end
 
   add_foreign_key "alunos", "disciplinas"
-  add_foreign_key "alunos", "turmas"
-  add_foreign_key "alunos_disciplinas", "alunos"
-  add_foreign_key "alunos_disciplinas", "disciplinas"
   add_foreign_key "alunos_disciplinas", "alunos"
   add_foreign_key "alunos_disciplinas", "disciplinas"
   add_foreign_key "disciplinas_professors", "disciplinas"
@@ -97,6 +102,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_130737) do
   add_foreign_key "matriculas", "alunos"
   add_foreign_key "matriculas", "disciplinas"
   add_foreign_key "matriculas", "professors"
-  add_foreign_key "matriculas", "turmas"
-  add_foreign_key "professors", "turmas"
 end

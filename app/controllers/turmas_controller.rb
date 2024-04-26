@@ -1,6 +1,7 @@
 class TurmasController < ApplicationController
   def index
     @turmas = Turma.all
+    @professores = Professor.all
 
   end
 
@@ -49,7 +50,7 @@ class TurmasController < ApplicationController
   private
 
   def turma_params
-    params.require(:turma).permit(:turma, :aluno_id, :professor_id)
+    params.require(:turma).permit(:turma, :turma_id, :aluno_id, professor_ids:[])
   end
 end
   

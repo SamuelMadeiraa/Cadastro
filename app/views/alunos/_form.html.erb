@@ -48,9 +48,9 @@
     </div>
 
 
-      <div class="actions">
-        <%= form.submit 'Criar Aluno', class: "input" %>
-      </div>
+      <<div class="actions">
+      <%= form.submit @aluno.persisted? ? 'Editar aluno' : 'Novo Aluno', class: "input" %>
+    </div>
     <% end %>
   </div>
 </div>

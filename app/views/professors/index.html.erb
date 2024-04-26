@@ -1,33 +1,31 @@
-
-  <h1 class="titulo-alunos-professor"><strong>Lista de Professores cadastrados</strong></h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Nome Completo</th>
-        <th>Email</th>
-        <th>CPF</th>
-        <th>Data de nascimento</th>
-        <th>Turma</th>
-
-      </tr>
-    </thead>
-    <tbody>
+<h1 class="titulo-alunos-professor"><strong>Lista de Professores cadastrados</strong></h1>
+<table>
+  <thead>
+    <tr>
+      <th>Nome Completo</th>
+      <th>Email</th>
+      <th>CPF</th>
+      <th>Data de nascimento</th>
+      <th>Turma</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @professors.each do |professor| %>
       <tr>
         <td><%= link_to professor.nome_completo, professor %></td>
         <td><%= professor.email %></td>
         <td><%= formatar_cpf(professor.cpf) %></td>
         <td><%= formatar_data_nascimento(professor.data_nascimento) %></td>
-        </tr>
-      <% professor.turmas.each do |turma| %>
-        <%= turma.turma %><br>
-      <% end %>
-    </td>
+        <td>
+          <% professor.turmas.each do |turma| %>
+            <%= turma.turma %><br>
+          <% end %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
-  </table>
+</table>
 
-  <button class="botao-aluno-professor">
+<button class="botao-aluno-professor">
   <%= link_to 'Novo Professor', new_professor_path %>
-  </button>
-
+</button>

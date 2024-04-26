@@ -19,9 +19,9 @@
       </div>
 
       <div class="field">
-        <%= form.label :Email %>
-        <%= form.email_field :email, class: "input" %>
-      </div>
+      <%= form.label :email %>
+      <%= form.email_field :email, class: "input" %>
+    </div>
 
       <div class="field">
         <%= form.label :cpf %>
@@ -34,13 +34,15 @@
       </div>
 
       <div class="field">
-        <%= form.label :turma_ids, 'Turmas' %><br>
-        <%= form.collection_check_boxes :turma_ids, Turma.all, :id, :turma do |b| %>
-          <div class="collection-check-box">
-            <%= b.check_box + b.label %>
-          </div>
-        <% end %>
-      </div>
+      <%= form.label :turma_ids, 'Turmas' %><br>
+      <%= form.collection_check_boxes :turma_ids, Turma.all, :id, :turma, class: "input" do |b| %>
+        <div class="collection-check-box">
+          <%= b.check_box + b.label %>
+        </div>
+      <% end %>
+    </div>
+    
+    
 
       <div class="field">
         <%= form.label :disciplina_ids, 'Disciplinas' %><br>
@@ -52,7 +54,7 @@
       </div>
 
       <div class="actions">
-        <%= form.submit 'Criar professor', class: "input" %>
+        <%= form.submit @professor.persisted? ? 'Editar Professor' : 'Novo professor', class: "input" %>
       </div>
     <% end %>
   </div>
