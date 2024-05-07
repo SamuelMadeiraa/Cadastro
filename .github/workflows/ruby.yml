@@ -35,7 +35,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.4
+          ruby-version: 3.2.2
           bundler-cache: true
 
       - name: Install dependencies
@@ -50,4 +50,4 @@ jobs:
         run: |
           cp config/database.ci.yml config/database.yml
           bundle exec rails db:schema:load
-          bundle exec rspec --format progress
+          bundle exec rspec --format progress 
