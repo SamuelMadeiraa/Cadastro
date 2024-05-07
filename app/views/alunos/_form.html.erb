@@ -30,7 +30,7 @@
 
       <div class="field">
         <%= form.label :aniversario %>
-        <%= form.date_field :aniversario, class: "input" %>
+        <%= form.date_field :data_nascimento, class: "input" %>
       </div>
 
       <div class="mb-4">
@@ -39,13 +39,14 @@
       </div>
 
       <div class="field">
-        <%= form.label :disciplina_ids, 'Disciplinas' %><br>
-        <%= form.collection_check_boxes :disciplina_ids, Disciplina.all, :id, :nome, class: "input" do |b| %>
-      <div class="collection-check-box">
-        <%= b.check_box + b.label %>
+      <%= form.label :disciplina_ids, 'Disciplinas' %><br>
+      <%= form.collection_check_boxes :disciplina_ids, Disciplina.all, :id, :nome, { }, { class: "input" } do |b| %>
+        <div class="collection-check-box">
+          <%= b.check_box + b.label %>
+        </div>
+      <% end %>
     </div>
-    <% end %>
-    </div>
+    
 
 
       <<div class="actions">

@@ -6,7 +6,8 @@ class TurmasController < ApplicationController
   end
 
   def show
-    @turma = Turma.find(params[:id])
+    @professor = Professor.find(params[:id])
+    @turmas = @professor.turmas
   end
 
   def new
@@ -15,9 +16,9 @@ class TurmasController < ApplicationController
 
   def create
     @turma = Turma.new(turma_params)
-
+  
     if @turma.save
-      redirect_to @turma, notice: 'Turma criada com sucesso.'
+      redirect_to @turma, notice: 'Turma was successfully created.'
     else
       render :new
     end
@@ -48,9 +49,8 @@ class TurmasController < ApplicationController
 
  
   private
-
   def turma_params
-    params.require(:turma).permit(:turma, :turma_id, :aluno_id, professor_ids:[])
+    params.require(:turma).permit(:turma, :disciplina_id, professor_ids: [])
   end
 end
   

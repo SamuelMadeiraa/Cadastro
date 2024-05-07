@@ -7,8 +7,8 @@ class ProfessorsController < ApplicationController
     end
   
     def show
-         @professor = Professor.find(params[:id])
-    @turmas = @professor.turmas
+        @professor = Professor.find(params[:id])
+        @turmas = @professor.turmas
     end
   
     def new
@@ -55,7 +55,7 @@ class ProfessorsController < ApplicationController
       end
   
       def professor_params
-        params.require(:professor).permit(:nome_completo, :email, :cpf, :data_nascimento, turma_ids: [])
+        params.require(:professor).permit(:nome_completo, :email, :cpf, :data_nascimento, turma_ids: [], disciplina_ids: [])
       end
   
       

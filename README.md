@@ -22,3 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+Aluno.materias, Matéria.alunos e Matéria.professores

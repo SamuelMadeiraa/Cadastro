@@ -137,3 +137,16 @@
   margin-top: 7px;
 }
 
+/* Estilos para a barra de pesquisa */
+.input-group {
+  margin-bottom: 10px;
+}
+
+.search-input {
+  border-radius: 20px; /* bordas arredondadas */
+  padding-left: 20px; /* espaço à esquerda para o ícone de pesquisa */
+}
+
+.input-group-append .btn {
+  border-radius: 20px; /* bordas arredondadas */
+}

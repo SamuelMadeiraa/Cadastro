@@ -4,6 +4,7 @@ class AlunosController < ApplicationController
   def index
     @alunos = Aluno.all
     @disciplinas = Disciplina.all
+    
   end
 
   def filtrar

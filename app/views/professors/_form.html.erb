@@ -3,7 +3,7 @@
     <%= form_with(model: @professor, local: true, class: "form") do |form| %>
       <% if @professor.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@professor.errors.count, "error") %> prohibited this professor from being saved:</h2>
+          <h2><%= pluralize(@professor.errors.count, "erro") %> proibiu este professor de ser salvo:</h2>
 
           <ul>
             <% @professor.errors.full_messages.each do |message| %>
@@ -29,29 +29,28 @@
       </div>
 
       <div class="field">
-        <%= form.label :aniversario %>
-        <%= form.date_field :aniversario, class: "input" %>
-      </div>
-
-      <div class="field">
-      <%= form.label :turma_ids, 'Turmas' %><br>
-      <%= form.collection_check_boxes :turma_ids, Turma.all, :id, :turma, class: "input" do |b| %>
-        <div class="collection-check-box">
-          <%= b.check_box + b.label %>
-        </div>
-      <% end %>
+      <%= form.label :aniversario %>
+      <%= form.date_field :data_nascimento, class: "input" %>
     </div>
-    
-    
+   
 
-      <div class="field">
-        <%= form.label :disciplina_ids, 'Disciplinas' %><br>
-        <%= form.collection_check_boxes :disciplina_ids, Disciplina.all, :id, :nome, class: "input" do |b| %>
-          <div class="collection-check-box">
-            <%= b.check_box + b.label %>
-          </div>
-        <% end %>
-      </div>
+    <div class="mb-4">
+    <%= form.label :turma_id %>
+    <%= form.select :turma_id, options_for_select(Turma.all.map { |t| [t.turma, t.id] }), class: "input" %>
+  </div>
+
+
+  <div class="field">
+  <%= form.label :disciplina_ids, 'Disciplinas' %><br>
+  form.collection_check_boxes :disciplina_ids, Disciplina.all, :id, :nome, { }, { class: "input" } do |b|
+    <div class="collection-check-box">
+      <%= b.check_box + b.label %>
+    </div>
+  <% end %>
+</div>
+
+
+  
 
       <div class="actions">
         <%= form.submit @professor.persisted? ? 'Editar Professor' : 'Novo professor', class: "input" %>
