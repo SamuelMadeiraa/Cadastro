@@ -33,26 +33,13 @@
       <%= form.date_field :data_nascimento, class: "input" %>
     </div>
    
-
     <div class="mb-4">
-    <%= form.label :turma_id %>
-    <%= form.select :turma_id, options_for_select(Turma.all.map { |t| [t.turma, t.id] }), class: "input" %>
-  </div>
+  <%= form.label :turma_ids %>
+  <%= form.collection_select :turma_id, Turma.order(:turma), :id, :turma %>
 
-
-  <div class="field">
-  <%= form.label :disciplina_ids, 'Disciplinas' %><br>
-  form.collection_check_boxes :disciplina_ids, Disciplina.all, :id, :nome, { }, { class: "input" } do |b|
-    <div class="collection-check-box">
-      <%= b.check_box + b.label %>
-    </div>
-  <% end %>
 </div>
-
-
-  
-
-      <div class="actions">
+   
+       <div class="actions">
         <%= form.submit @professor.persisted? ? 'Editar Professor' : 'Novo professor', class: "input" %>
       </div>
     <% end %>

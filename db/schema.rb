@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_06_123547) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_07_125441) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -136,17 +136,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_06_123547) do
     t.bigint "turma_id", null: false
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "turmas", force: :cascade do |t|
     t.string "turma"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "disciplina_id", null: false
-    t.index ["disciplina_id"], name: "index_turmas_on_disciplina_id"
+    t.integer "professor_id"
   end
 
   add_foreign_key "aluno_disciplinas", "alunos"
@@ -166,5 +160,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_06_123547) do
   add_foreign_key "matriculas", "alunos"
   add_foreign_key "matriculas", "disciplinas"
   add_foreign_key "matriculas", "professors"
-  add_foreign_key "turmas", "disciplinas"
 end

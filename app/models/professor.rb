@@ -2,6 +2,7 @@ class Professor < ApplicationRecord
   has_many :disciplina_professores
   has_many :disciplinas, through: :disciplina_professores
   has_many :turmas
+
   
   validates :nome_completo, uniqueness: { case_sensitive: false, message: "já existe um professor(a) com esse nome" }
   validates :cpf, uniqueness: { case_sensitive: false, message: "já existe um professor(a) com esse CPF" }

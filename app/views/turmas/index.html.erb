@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
   <title>Document</title>
 </head>
+
 <body>
   <h1 class="titulo-alunos"><strong>Lista de Turmas cadastradas</strong></h1>
   <table class="table">
     <thead>
       <tr>
         <th>Turmas</th>
-
       </tr>
     </thead>
     <tbody>
       <% Turma.all.each do |turma| %>
-        <tr>
-          <td>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModalTurma<%= turma.id %>">
-              Turma <%= turma.turma %>
-            </button>
-          </td>
-          <td>
-          
-          </td>
-        </tr>
+      <tr>
+        <td>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModalTurma<%= turma.id %>">
+            Turma <%= turma.turma %>
+          </button>
+        </td>
+        <td>
+
+        </td>
+      </tr>
       <% end %>
     </tbody>
   </table>
 
   <% Turma.all.each do |turma| %>
-    <div class="modal" id="myModalTurma<%= turma.id %>">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Alunos e Professores da <%= turma.turma %></h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
+  <div class="modal" id="myModalTurma<%= turma.id %>">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Alunos e Professores da <%= turma.turma %></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
 
-          <!-- Modal body -->
-          <div class="modal-body">
-          <h5>Alunos</h5>  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <h5>Alunos</h5>
           <ul>
-              <% Aluno.where(turma_id: turma.id).each do |aluno| %>
-                <li><%= aluno.nome_completo %></li>
-              <% end %>
-            </ul>
-         
-          
-         
-            </ul>
-          </div>
+            <% Aluno.where(turma_id: turma.id).each do |aluno| %>
+            <li><%= aluno.nome_completo %></li>
+            <% end %>
+          </ul>
+          <h5>Professores </h5>
+          <ul>
+            <% Professor.where(turma_id: turma.id).each do |professor| %>
+            <li><%= professor.nome_completo %></li>
+            <% end %>
+          </ul>
+        </div>
 
-          <!-- Modal footer -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
-          </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
         </div>
       </div>
     </div>
+  </div>
   <% end %>
 
-  <button class="botao-aluno">
+  <div class="botao-aluno">
     <%= link_to 'Nova Turma', new_turma_path %> <%= link_to 'Voltar', turmas_path %>
-  </button>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
+
 </html>
