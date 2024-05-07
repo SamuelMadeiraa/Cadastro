@@ -6,6 +6,6 @@ RSpec.describe Aluno, type: :model do
     end
 
     it 'validação que vai dar erro ' do 
-      expect(1).to eq('hello')
+      expect(hello).to eq('hello')
       end
 end
