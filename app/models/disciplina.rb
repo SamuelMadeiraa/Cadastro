@@ -6,6 +6,6 @@ class Disciplina < ApplicationRecord
   has_many :professors, through: :disciplina_professors
 
   
-  
+  validates :nome, presence: true
   validates :nome, uniqueness: { case_sensitive: false, on: :create, message: "já existe uma disciplina com esse nome" }
 end
