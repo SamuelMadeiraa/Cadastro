@@ -3,17 +3,17 @@ class Aluno < ApplicationRecord
   has_many :disciplinas, through: :aluno_disciplinas
   belongs_to :turma
 
-  validates :cpf, presence: true, length: { is: 11 }, numericality: { only_integer: true }
-  validate :cpf_deve_ter_11_digitos
+  validates :nome_completo, presence: true
 
-  scope :filter_by_name, -> (query) { where("nome_completo LIKE ?", "%#{query}%") }
+  validate :cpf_deve_ser_valido
+
+  scope :filter_by_name, -> (query) { where("nome_completo ILIKE ?", "%#{query}%") }
 
   private
 
-  def cpf_deve_ter_11_digitos
-    unless cpf.to_s.length == 11
-      errors.add(:cpf, "deve conter exatamente 11 dígitos")
+  def cpf_deve_ser_valido
+    unless CPF.valid?(cpf)
+      errors.add(:cpf, "não é válido")
     end
-  
   end
 end
