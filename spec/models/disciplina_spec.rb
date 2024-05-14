@@ -1,13 +1,13 @@
 require 'rails_helper'
-require_relative '../../app/models/disciplina'
 
 RSpec.describe Disciplina, type: :model do
-    it "deve validar a presença do nome" do
-      disciplina = Disciplina.new
-      expect(disciplina).not_to be_valid
-      expect(disciplina.errors[:nome]).to include("can't be blank")
-  
-      disciplina.nome = nil
-      expect(disciplina).to be_valid
+  describe "Atributos necessários para criação de nova disciplina" do
+    it "Disciplia deve ter um " do
+      Disciplina = Disciplina.new
+      expect(Disciplina).to_not be_valid
+      expect(Disciplina.errors[:nome_completo]).to include("can't be blank")
     end
   end
+end
+
+   

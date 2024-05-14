@@ -53,9 +53,8 @@ group :development, :test do
   gem 'byebug', '~> 9.0', '>= 9.0.6'
   gem "rspec-rails", "~> 6.1"
   gem 'factory_bot_rails'
-
-  
-
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'cpf_cnpj'
 end
 
 group :development do

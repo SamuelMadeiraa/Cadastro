@@ -4,7 +4,6 @@ class AlunosController < ApplicationController
   def index
     @alunos = Aluno.all
     @disciplinas = Disciplina.all
-    
   end
 
   def filtrar
@@ -13,6 +12,15 @@ class AlunosController < ApplicationController
   end
 
   def show
+  end
+
+  def show_by_name
+    @aluno = Aluno.find_by(nome_completo: params[:nome_completo])
+    if @aluno
+      render :show
+    else
+      head :not_found
+    end
   end
 
   def new

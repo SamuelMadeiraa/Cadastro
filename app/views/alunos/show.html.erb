@@ -6,7 +6,6 @@
     <p><strong>Data de Nascimento:</strong> <%= @aluno.data_nascimento %></p>
     <p><strong>Turma:</strong> /p>
  <div class="botoes">
-    <%= link_to 'Editar', edit_aluno_path(@aluno) %> |
     <%= link_to 'Apagar', aluno_path(@aluno), method: :delete, data: { confirm: 'Tem certeza?' } %> |
     <%= link_to 'Voltar', inicio_path %>
 </div>
