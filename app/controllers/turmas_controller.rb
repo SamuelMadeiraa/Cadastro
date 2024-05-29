@@ -1,26 +1,26 @@
 class TurmasController < ApplicationController
   def index
     @turmas = Turma.all
-    @professores = Professor.all
-
+    render json: @turmas
   end
 
   def show
-    @professor = Professor.find(params[:id])
-    @turmas = @professor.turmas
+    @turma = Turma.find(params[:id])
+    render json: @turma
   end
 
   def new
     @turma = Turma.new
+    render json: @turmas
+
   end
 
   def create
     @turma = Turma.new(turma_params)
-  
     if @turma.save
-      redirect_to @turma, notice: 'Turma was successfully created.'
+      render json: @turma, status: :created
     else
-      render :new
+      render json: @turma.errors, status: :unprocessable_entity
     end
   end
 
@@ -45,7 +45,11 @@ class TurmasController < ApplicationController
     redirect_to turmas_path, notice: 'Turma apagada com sucesso.'
   end
   
-
+  def set_turma
+    @turma = Turma.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render status: :not_found, json: { error: 'Turma não encontrada' }
+  end
 
  
   private

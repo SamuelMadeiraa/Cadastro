@@ -4,10 +4,9 @@ class Professor < ApplicationRecord
   has_many :turmas
 
   
-  validates :nome_completo, uniqueness: { case_sensitive: false, message: "já existe um professor(a) com esse nome" }
-  validates :cpf, uniqueness: { case_sensitive: false, message: "já existe um professor(a) com esse CPF" }
-  validates :email, uniqueness: { case_sensitive: false, message: "já existe um professor(a) com esse email" }
-  validate :cpf_deve_ter_11_digitos
+  validates :nome_completo, presence: true
+  validates :cpf, presence: true, uniqueness: true, length: { is: 11 }
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   private
 

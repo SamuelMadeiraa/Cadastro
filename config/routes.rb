@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   resources :turmas do
     get 'filtroalunos', on: :member
   end
+  resources :turmas, only: [:create]
 
-  # Adicionar rota para o show action do AlunosController
-  resources :alunos, only: [:show] 
 
   match '*path', to: 'application#render_404', via: :all
 end
