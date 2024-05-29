@@ -51,6 +51,10 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
   gem 'byebug', '~> 9.0', '>= 9.0.6'
+  gem 'rspec', '~> 3.13'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails', '~> 6.1.0'
 
 
 end
@@ -70,10 +74,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem "simplecov", "~> 0.22.0", :group => :test, :require => false
-  gem "simplecov_json_formatter", "~> 0.1.4", :group => :test, :require => false
-  gem "database_cleaner-active_record", "~> 2.1"
-
 end
 
 gem 'sassc-rails', '>= 2.1.2'
