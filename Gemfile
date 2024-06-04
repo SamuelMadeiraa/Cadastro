@@ -55,6 +55,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails', '~> 6.1.0'
+  gem 'cpf_faker'
 
 
 end
@@ -82,3 +83,5 @@ gem 'sassc-rails', '>= 2.1.2'
 
 
 
+
+gem "rails-controller-testing", "~> 1.0"

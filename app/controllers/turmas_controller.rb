@@ -1,7 +1,11 @@
 class TurmasController < ApplicationController
   def index
     @turmas = Turma.all
+    @professors = Professor.all
     render json: @turmas
+    render :index
+    
+
   end
 
   def show
@@ -29,10 +33,9 @@ class TurmasController < ApplicationController
   end
 
   def update
-    @turma = Turma.find(params[:id])
-
-    if @turma.update(turma_params)
-      redirect_to @turma, notice: 'Turma atualizada com sucesso.'
+    @disciplina = Disciplina.find(params[:id])
+    if @disciplina.update(disciplina_params)
+      redirect_to @disciplina
     else
       render :edit
     end

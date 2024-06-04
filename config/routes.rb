@@ -4,11 +4,14 @@ Rails.application.routes.draw do
 
   resources :professors
   resources :disciplinas
+  resources :alunos
   resources :alunos, only: [:index, :show, :new, :create] do
     collection do
       get 'filtrar', to: 'alunos#filtrar'
     end
   end
+  resources :turmas, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
   resources :turmas do
     get 'filtroalunos', on: :member
   end

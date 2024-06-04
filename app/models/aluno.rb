@@ -3,8 +3,11 @@ class Aluno < ApplicationRecord
   has_many :disciplinas, through: :aluno_disciplinas
   belongs_to :turma
   
-  validates :nome_completo, :cpf, :email, :data_nascimento, presence: true
-  validates :cpf, :email, uniqueness: true
+  validates :nome_completo, presence: true
+  validates :cpf, presence: true
+  validates :email, presence: true
+  validates :data_nascimento, presence: true
+  validates :turma_id, presence: true
 
   validates :cpf, presence: true, length: { is: 11 }, numericality: { only_integer: true }
   scope :filter_by_name, -> (query) { where("nome_completo ILIKE ?", "%#{query}%") }
