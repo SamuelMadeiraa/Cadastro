@@ -1,7 +1,7 @@
 
   require "rails_helper"
 
-RSpec.describe TurmasController, type: :controller do
+RSpec.describe DisciplinasController, type: :controller do
   let!(:disciplina) { create(:disciplina) }
 
   describe "GET #index" do

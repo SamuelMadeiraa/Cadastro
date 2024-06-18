@@ -1,7 +1,6 @@
-# spec/factories/turmas.rb
 FactoryBot.define do
   factory :turma do
-    turma { "Turma #{Faker::Number.number(digits: 3)}" }
-    professor # Chama a fábrica de professor automaticamente
+    turma { "Turma #{Faker::Number.unique.number(digits: 3)}" }
+    association :professor  # Assuming Turma belongs to Professor
   end
 end

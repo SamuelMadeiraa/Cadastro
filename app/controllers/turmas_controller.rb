@@ -1,63 +1,49 @@
 class TurmasController < ApplicationController
+  before_action :set_turma, only: [:show, :edit, :update, :destroy]
+
   def index
     @turmas = Turma.all
-    @professors = Professor.all
-    render json: @turmas
-    render :index
-    
-
   end
 
   def show
-    @turma = Turma.find(params[:id])
-    render json: @turma
   end
 
   def new
     @turma = Turma.new
-    render json: @turmas
-
   end
 
   def create
     @turma = Turma.new(turma_params)
     if @turma.save
-      render json: @turma, status: :created
+      redirect_to @turma, notice: 'Turma was successfully created.'
     else
-      render json: @turma.errors, status: :unprocessable_entity
+      render :new
     end
   end
 
   def edit
-    @turma = Turma.find(params[:id])
   end
 
   def update
-    @disciplina = Disciplina.find(params[:id])
-    if @disciplina.update(disciplina_params)
-      redirect_to @disciplina
+    if @turma.update(turma_params)
+      redirect_to @turma, notice: 'Turma was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    @turma = Turma.find(params[:id])
     @turma.destroy
-
-    redirect_to turmas_path, notice: 'Turma apagada com sucesso.'
+    redirect_to turmas_url, notice: 'Turma was successfully destroyed.'
   end
-  
+
+  private
+
   def set_turma
     @turma = Turma.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render status: :not_found, json: { error: 'Turma não encontrada' }
   end
 
- 
-  private
   def turma_params
-    params.require(:turma).permit(:turma, :disciplina_id, professor_ids: [])
+    params.require(:turma).permit(:turma, :professor_id)  # Adjust according to your actual attributes
   end
 end
-  

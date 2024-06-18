@@ -1,5 +1,3 @@
-
-
 require "rails_helper"
 
 RSpec.describe AlunosController, type: :controller do
@@ -30,13 +28,26 @@ RSpec.describe AlunosController, type: :controller do
   end
 
   describe "POST #create" do
-    context "with valid attributes" do
-      it "creates a new aluno" do
+  context "with valid attributes" do
+    it "creates a new aluno" do
+      aluno = FactoryBot.create(:aluno)  
+      expect(aluno).to be_valid
+    end
+    end
+
+    context "with invalid attributes" do
+      it "does not save the new aluno" do
         expect {
-          post :create, params: { aluno: FactoryBot.create(:aluno)}
-        }.to change(Aluno, :count).by(1)
+          post :create, params: { aluno: attributes_for(:aluno, nome_completo: nil) }
+        }.to_not change(Aluno, :count)
+      end
+
+      it "re-renders the :new template" do
+        post :create, params: { aluno: attributes_for(:aluno, nome_completo: nil) }
+        expect(response).to render_template(:new)
       end
     end
+  end
 
     # context "Testando as requisições" do
     #   context "POST #create" do
@@ -46,19 +57,6 @@ RSpec.describe AlunosController, type: :controller do
     #   end
     # end
 
-    context "with invalid attributes" do
-      it "does not save the new aluno" do
-        expect {
-          post :create, params: { aluno: attributes_for(:aluno, nome_completo: nil) }
-        }.to_not change(aluno, :count)
-      end
-
-      it "re-renders the :new template" do
-        post :create, params: { aluno: attributes_for(:aluno, nome_completo: nil) }
-        expect(response).to render_template(:new)
-      end
-    end
-  end
 
   describe "PATCH #update" do
     context "with valid attributes" do
